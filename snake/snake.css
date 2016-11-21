@@ -1,0 +1,89 @@
+/* mini reset */
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+body {
+  padding-top: 1em;
+}
+
+h1, p {
+  text-align: center;  
+}
+
+h1 {
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-top: 1em;
+}
+
+#pause,
+.score {
+  text-align: center;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+#grid {
+  border: 1px solid gray;
+  width: 800px;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+.square {
+  border: 1px solid gray;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.square span {
+  display: inline-block;
+  margin: 0 auto;
+  line-height: 1;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.is-snake {
+  background: gray;
+}
+
+.food {
+  width: 16px;
+  height: 16px;
+  background: no-repeat center center;
+  background-size: cover;
+  background-image: url("images/food.png");
+}
+
+.head {
+  width: 12px;
+  height: 12px;
+  background: no-repeat center center;
+  background-size: cover;
+}
+
+.l {
+  background-image: url("images/left.png");
+}
+
+.r {
+  background-image: url("images/right.png");
+}
+
+.u {
+  background-image: url("images/up.png");
+}
+
+.d {
+  background-image: url("images/down.png");
+}
