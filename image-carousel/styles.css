@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #3C6AE2;
+}
+
+body {
+  background: gray;
+}
+
+.wrapper {
+  background: #fff;
+  width: 1200px;
+  height: 100vh;  
+  margin: 0 auto;
+  padding: 1rem 0; 
+  overflow: hidden;
+}
+
+h1 {
+  color: #4A90E2;
+  text-align: center;
+  margin-bottom: 1rem;
+} 
+
+.project-description {
+  margin-top: 1rem;
+  font-size: 0.9em;
+  text-align: center; 
+}
+
+/* Carousel styles */
+.carousel-wrapper {
+  overflow: hidden;
+  width: 1200px;
+  position: relative;
+}
+
+.carousel {
+  width: 4800px;
+  transition: transform 1s;
+}
+
+.slide {
+  display: inline-block;
+  float: left;
+  line-height: 0;
+}
+
+.dots {
+  position: absolute;
+  bottom: 2rem;
+  height: 20px;
+  text-align: center;
+  width: 100%;  
+  line-heigth: 20px;
+}
+
+.dot {
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px gray;
+  display: inline-block;
+  margin: 0 5px;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+#stop-carousel {
+  display: flex;
+  position: absolute;
+  border-radius: 50%;
+  top: 50px;
+  right: 50px;
+  height: 37px;
+  width: 37px;
+  cursor: pointer;
+  border: 3px solid rgba(0,0,0,.4);
+  justify-content: center;
+  align-items: center;
+}
+
+#stop-carousel span {
+  height: 14px;
+  width: 14px;
+  background: rgba(0,0,0,.6);
+}
+
+#stop-carousel.stopped span:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 16px;
+  border-color: transparent transparent transparent rgba(0,0,0,.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -6px;
+}
+
+#stop-carousel.stopped span {
+  background: transparent;
+}
+
+.carousel-arrow {
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  width: 50px;
+  z-index: 101;
+  position: absolute;
+  top: 280px;
+  opacity: 0.3; 
+  transition: opacity 0.3s;
+}
+
+.left {
+  background: url('images/leftarrow.png') no-repeat;
+  left: 6vw;
+  background-size: 50px 50px;
+  background-position: center center;
+}
+
+.right {
+  background: url('images/rightarrow.png') no-repeat;
+  right: 6vw;
+  background-size: 50px 50px;
+  background-position: center center;
+}
+
+.carousel-wrapper:hover .carousel-arrow {
+  opacity: 1;
+}
+
