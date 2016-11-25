@@ -1,0 +1,94 @@
+/*  Base styles */
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  line-height: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 1em;
+  background: #B8E986;
+}
+
+h1, p {
+  text-align: center;  
+}
+
+h1 {
+  margin-bottom: 2em;
+  margin-top: 1em;
+  line-height: 0;
+  color: #324654;
+}
+
+a {
+  text-decoration: none;
+  color: #F6A623;
+}
+
+.reference {
+  margin-top: 1em;
+  color: #324654;
+}
+
+#dashboard {
+  color: #F6A623;
+}
+/* Board styles */
+
+.board {
+  margin: 1em auto;
+  width: 600px;
+  height: 600px;
+  border: 3px solid #324654;
+}
+
+.board div {
+  display: inline-block;
+  width: 198px;
+  height: 198px;
+  border: 1px solid #324654;
+  float: left;
+}
+
+.board .blank {
+  cursor: pointer;
+}
+
+.board .x,
+.board .o {
+  font-size: 80px;
+  line-height: 80px;
+  text-align: center;
+  vertical-align: middle;
+  float: left;
+  padding: 50px 0 0 0;
+  background-size: 160px 160px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.board .x {
+  background-image: url("images/x.png");
+}
+
+.board .o {
+  background-image: url("images/o.png");
+}
+
+.game-over {
+  color: #324654;
+  font-size: 2em;
+  display: block;
+  padding-top: 200px;
+  margin-bottom: 1em;
+}
+
+.reload {
+  display: block;
+  font-size: 1.2em;
+  text-align: center;
+  color: #6EA223;
+}
