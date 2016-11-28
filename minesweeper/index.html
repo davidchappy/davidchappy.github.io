@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>JavaScript Minesweeper</title>
+  <link rel="stylesheet" href="fonts/">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="body">
+  
+  <h1>Minesweeper</h1>
+  <a id="options-toggle">Game Options</a>
+  <div id="game-options">
+    <p>Choose a difficulty</p>
+    <a id="close-options">close</a>
+    <ul>
+      <li id="beginner">Beginner</li>
+      <li id="intermediate" class="checked">Intermediate</li>
+      <li id="expert">Expert</li>
+    </ul>
+  </div>
+
+  <div id="board" class="board">
+    <section id="dashboard">
+      <div id="score">35</div>
+      <div id="smiley"></div>
+      <div id="timer">60</div>
+    </section>
+    <section id="squares"></section>
+  </div>
+  
+  <p class="reference"><em>A <a href="http://www.theodinproject.com/courses/javascript-and-jquery/lessons/minesweeper">JavaScript project</a> by <strong>David Chapman</strong> in partial fulfillment of <a href="http://www.theodinproject.com/">The Odin Project</a></em></p>
+
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>
