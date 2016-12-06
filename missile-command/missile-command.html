@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Missile Command</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Missile Command</h1>
+
+  <p>Press space to start, pause and resume the game.</p>
+  <a href='#' id="sound-control">Turn off sound</a>
+    
+  <canvas id="canvas"></canvas>  
+
+  <p class="reference"><em>A <a href="http://www.theodinproject.com/courses/javascript-and-jquery/lessons/building-games-with-canvas">JavaScript project</a> by <strong>David Chapman</strong> in partial fulfillment of <a href="http://www.theodinproject.com/">The Odin Project</a></em></p>
+  <p class="reference">Audio files borrowed from <a href="https://www.html5rocks.com/en/tutorials/canvas/notearsgame/">here</a></p>
+
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.1.min.js"></script>
+  <script>
+  if (typeof jQuery == 'undefined') {
+      document.write(unescape("%3Cscript src='/js/jquery-3.1.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+  }
+  </script>
+  <script src="jquery.hotkeys.js"></script>
+  <script src="game.js"></script>
+  <script>
+
+    function setup(starting) {
+      initCities();
+      initBases();
+      initPlayerMissiles();
+      initEnemyMissiles();
+      initUFOs();
+      initPlanes();
+      if(starting) {
+        listen();
+      }
+    }
+
+    function gameLoop() {
+      updateGame();
+      if(game.state === 'playing') {
+        updatePlanes();
+        updateUFOs();
+        updateCities();
+        updateBases();
+        updateFiredMissiles();
+        updateExplosions();
+      }
+      drawBackground(c);
+      drawOverlay(c);
+      drawBases(c);
+      drawCities(c);
+      drawFiredMissiles(c);
+      drawExplosions(c);
+      drawUFOs(c);
+      drawPlanes(c);
+      drawCrosshairs(c);
+    }
+
+    setup(true);
+    setInterval(gameLoop,1000/FPS);
+  </script>
+
+
+</body>
+</html>

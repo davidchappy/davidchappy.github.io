@@ -1,0 +1,19 @@
+body {
+  padding-top: 5rem;
+}
+
+canvas {
+  border: 1px solid black;
+  margin: 0 auto;
+  display: block;
+  cursor: none;
+}
+
+p, h1, a {
+  text-align: center;
+  display: block;
+}
+
+.reference a {
+  display: inline;
+}
