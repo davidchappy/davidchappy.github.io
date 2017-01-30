@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="38px" height="50px" viewBox="0 0 38 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>unlockicongray</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="unlockicongray" transform="translate(1.000000, 1.000000)">
+            <path d="M2,48 C0.9,48 0,47.1 0,46 L0,22 C0,20.9 0.9,20 2,20 L34,20 C35.1,20 36,20.9 36,22 L36,46 C36,47.1 35.1,48 34,48 L2,48 Z" id="Shape" stroke="#DBDBDB" stroke-width="2"></path>
+            <path d="M27.6,12.1 C27.6,12.1 26.5,8.5 26.3,7.8 C24.5,2 18.3,-1.3 12.5,0.5 C6.7,2.3 3.4,8.5 5.2,14.3 C5.5,15.4 7,20 7,20" id="Shape" stroke="#DBDBDB" stroke-width="2"></path>
+            <path d="M21,32 C21,30.3 19.7,29 18,29 C16.3,29 15,30.3 15,32 C15,32.9 15.4,33.7 16,34.2 L16,37 C16,38.1 16.9,39 18,39 C19.1,39 20,38.1 20,37 L20,34.2 C20.6,33.7 21,32.9 21,32 Z" id="Shape" fill="#DBDBDB"></path>
+        </g>
+    </g>
+</svg>

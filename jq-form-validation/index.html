@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="mint-form-header clearfix">
+      <img class="logo" src="images/mint_logo.png" alt="">
+      <ul class="signup-links">
+        <li class="selected">Sign up</li>
+        <li>Log in</li>
+      </ul>
+    </div>
+
+    <div class="form-wrapper clearfix">
+
+      <form class="signup-form" method="get" action="" id="mintSignupForm" novalidate>
+        <h1>See all your finances in one place &amp; create a budget</h1>
+
+        <fieldset>
+          <p>
+            <label for="mintEmail">Your Email</label>
+            <input type="email" id="mintEmail" name="mintEmail" required/>
+          </p>
+
+          <p>
+            <label for="mintEmailConfirm">Confirm Email</label>
+            <input type="email" id="mintEmailConfirm" name="mintEmailConfirm" required/>
+          </p>
+
+          <div class="inline-fields">
+            <div class="form-container country">
+              <label for="mintCountry">Country</label>
+              <select name="mintCountry" id="mintCountry"/>
+                <option value="USA">USA</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          
+            <div class="form-container zip">
+              <label for="mintZip">Zip Code</label>
+              <input type="text" name="mintZip" id="mintZip" required/>   
+            </div>
+          </div>
+
+          <p>
+            <label for="mintPassword">Password</label>
+            <input type="password" name="mintPassword" id="mintPassword" required/>
+          </p>
+          
+          <p>
+            <label for="mintPasswordConfirm">Confirm Password</label>
+            <input type="password" name="mintPasswordConfirm" id="mintPasswordConfirm" required/>
+          </p>
+
+          <p class="remember-container">
+            <input class="remember-me" type="checkbox" id="mintRemember" name="mintRemember">
+            <label for="mintRemember">Remember me</label>
+          </p>
+          
+          <p>
+            <input id="submit" type="submit" class="submit" value="SIGN UP"/>
+          </p>
+  
+          <p class="terms">
+            By clicking Sign Up you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Statement</a>
+          </p>
+
+          
+        </fieldset>
+
+      </form>
+
+      <div class="sidebar">
+        <h3>Why you'll love it</h3>
+        <ul class="benefits">
+          <li>See all your accounts in one place</li>
+          <li>Set a budget and pay down your debt</li>
+          <li>Find the best ways to grow your money</li>
+          <li>Stay <a href="http://www.mint.com/privacy/">safe and secure</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+
+    <div class="mint-page-footer">
+      <div class="links">
+        <ul>
+          <li>Support</li>
+          <li>Terms of Use</li>
+          <li>Privacy</li>
+          <li>Legal and Trademark Notices</li>
+          <li>About Intuit</li>
+        </ul>
+      </div>
+
+      <div class="badges">
+        <img src="images/norton.gif">
+        <img src="images/truste.png">
+      </div>
+
+      <p class="copyright">© 2016 Intuit, Inc.  |  ph7456.3 - spa91.18</p>
+    </div>
+
+  </div> <!-- // .wrapper --> 
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!--
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+-->
+  <script src="app.js"></script>
+</body>
+</html>
+
