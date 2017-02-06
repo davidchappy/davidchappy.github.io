@@ -1,0 +1,14 @@
+@mixin clearfix {
+  content: '';
+  clear: both;
+  display: block;
+}
+
+@mixin button {
+  position: absolute;
+  width: 70px;
+  height: 25px;
+  background: darken($background-gray, 50%);
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
