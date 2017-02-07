@@ -1,0 +1,909 @@
+@import '_reset';
+@import '_variables';
+@import '_mixins';
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;  
+  background: $white;
+  font-family: arial, sans-serif;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  color: $orange;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.icon {
+  @include background('icons-sprite.svg', 1200px 1200px);
+  background-size: 1200px 1200px;
+  width: 16px;
+  height: 16px;
+}
+
+// header
+
+header {
+  width: 100%;
+  padding-top: 48px;
+  
+  @media screen and (min-width: $medium) {
+    padding-top: 80px;
+  }
+
+  // NAVIGATION
+  
+  .mob-nav {
+    @include linear-gradient-simple(left, top, right, bottom, #C09, #F42, 85%);
+    z-index: 102;
+    display: none;
+    position: fixed;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    height:100vh;
+    width:100vw;
+    max-width: $medium;
+    padding-top: 3rem;
+    
+    .close {
+      cursor: pointer;
+      display: block;
+      text-align: right;
+      font-size: 2em;
+      width: 100%;
+      height: 15px;
+      position: absolute;
+      top: 10px;
+      right: 0;
+      padding-bottom: 2.4rem;
+      padding-right: 16px;
+      color: $white;
+      border-bottom: 1px solid transparentize($white, 0.7);
+    }
+
+    .mob-social {
+      border-bottom: 1px solid transparentize($white, 0.7);
+      height:60px; 
+      line-height: 60px;
+      padding-left: 2rem;
+      text-align: center;
+      
+      li {
+        display: inline-block;
+      }
+      
+      .icon {
+        height: 18px;
+        width: 18px;
+        margin-right: 5%;
+        vertical-align: middle;
+      }
+
+      .facebook { background-position: -240px -240px; }
+      .twitter { background-position: -928px -928px; }
+      .email { background-position: -496px -496px; }
+      .google-plus { background-position: -288px -288px; }
+      .linkedin { background-position: -384px -384px; }
+      .youtube { background-position: -1184px -1184px; }
+      .instagram { background-position: -336px -336px; }
+      .pinterest { background-position: -592px -592px; }
+      .rss { background-position: -736px -736px; }
+
+    }
+
+    .mob-main {
+      padding: 2rem 0 0 1.3rem;
+      color: $white;
+      position: relative;
+      
+      .left-col {
+        width: 50%;
+        position: absolute;
+        left: 0;
+        margin-left: 1.3rem;
+      }
+
+      .right-col {
+        position: absolute;
+        right: 0;
+        width: 50%;
+      }
+
+      ul {
+        margin-bottom: 2rem;
+        
+        h2 {
+          font-weight: normal;
+          margin-bottom: 1rem;
+          cursor: pointer;
+        }
+        
+        li {
+          display: block;
+          color: transparentize($white, 0.5);
+          font-size: 0.8em;
+          margin-bottom: 0.8rem;
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+  
+  .navigation {
+    background: $white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 48px;
+    height: 48px;
+    z-index: 101;
+    
+    li {
+      cursor: pointer;
+    }
+    
+    @media screen and (min-width: $medium) {
+      height: 80px;
+    }
+    
+    .main-logo {     
+      @include linear-gradient-simple(left, top, right, bottom, #C09, #F42, 85%);
+      cursor: pointer;
+      z-index: 103;
+      width: 106px;
+      height: 100%;
+      overflow: hidden;
+      
+      &:after {
+        @include background('logo-small.png', 18px 15px); 
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 103;
+        top: 0;
+        left: 0;
+        width: 106px;
+        height: 100%;
+      }
+      
+      @media screen and (min-width: $medium) {
+        height: 80px;
+
+        &:after {
+          background-position: 18px 32px;         
+        }
+      }
+
+      @media screen and (min-width: $large) {
+        transform: translateX(-108px);
+      }
+    }
+
+    ul {
+      position: absolute;
+      top: 0;
+    }    
+
+    .nav-left {
+      padding-left: 1rem;
+      left: 0;         
+      z-index: 102;        
+    }
+
+    .nav-right {
+      padding-right: 0.5rem;
+      right: 0;
+      overflow: hidden;
+    }
+
+    .main-nav {
+      display: none;
+      @media screen and (min-width: $medium) {
+        display: block;
+        position: absolute;
+        height: 32px;
+        line-height: 32px;
+        padding: 0 0.5rem 0 1rem;
+        width: calc(100% - 106px);
+        background: $black-background;
+        top: 0;
+        left: 106px;
+        color: darken($white, 40%);
+        font-size: 0.8em;    
+
+        li {
+          margin-right: 0.5rem;
+          display: inline-block;
+          
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+      
+      @media screen and (min-width: $large) {
+        width: 100%;
+        left: 0;
+      }
+
+      .active-link {
+        color: $white;
+      }
+
+    }
+
+    .sections-nav {
+      display: none;
+      
+      .sub-nav {
+        display: none;
+      }
+
+      .nav-right {
+        right: 48px;
+        padding-right: 96px;
+        
+        .icon {
+          margin-top: -2px;
+          vertical-align: middle;
+          opacity: 0.3;
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
+
+      .facebook { background-position: -224px -224px; }
+      .twitter { background-position: -912px -912px; }
+      .email { background-position: -480px -480px; }
+      .google-plus { background-position: -224px -224px; }
+      .linkedin { background-position: -224px -224px; }
+      .youtube { background-position: -224px -224px; }
+      .instagram { background-position: -224px -224px; }
+      .pinterest { background-position: -224px -224px; }
+      .rss { background-position: -224px -224px; }
+
+      @media screen and (min-width: $medium) {
+        display: block;
+        height: 48px;
+        line-height: 48px;
+        width: 100%;
+        position: absolute;
+        left: 106px;
+        top: 32px;
+        background: $white;
+        font-size: 0.8em;
+        color: lighten(black, 80%);
+        
+        li {
+          display: inline-block;
+          margin-right: 1rem;
+        }
+
+        .ellipsis {
+          background-position: -528px -528px;
+          opacity: 0.4;
+          vertical-align: middle;
+          margin-top: -3px;
+        }
+      }
+
+      @media screen and (min-width: $large) {
+        left: 0;
+        background: $white;
+        
+        .nav-left {
+          .ellipsis {
+            background: $white;
+            min-width: 350px;
+          }
+          
+          .sub-nav {
+            color: darken($white, 65%);
+            display: inline-block;
+          }
+        }
+
+        .nav-right {
+          padding-right: 0;
+        }
+      }
+    }
+
+    .search {
+      height: 48px;
+      width: 48px;
+      position: absolute;
+      right: 50px;
+      top: 0;
+      line-height: 48px;
+      text-align: center;
+      border-right: 1px solid lighten(black, 90%);
+      border-left: 1px solid lighten(black, 90%);
+      
+      .icon {
+        background-position: -768px -768px;
+        height: 16px;
+        width: 16px;
+        display: inline-block;
+        margin: auto;
+        opacity: 0.3;
+        vertical-align: middle;
+        cursor: pointer;
+        
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+      
+      @media screen and (min-width: $medium) {
+        right: 0;
+        top: 32px;
+        height: 48px;
+      }
+    }
+
+    .nav-trigger {
+      @media screen and (min-width: $medium) {
+        display:none;
+      }
+      z-index: 1001;
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 48px;
+      width: 50px;
+      background: $white;
+      padding-top: 1rem;
+      padding-left: 0.9rem;
+      
+      div {
+        display: block;
+        background: lighten($orange, 4%);
+        height: 2px;
+        width: 20px;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  // HERO
+  
+  .hero {
+
+    article {
+      width: 100%;
+      height: 203.5px;
+      
+      // temp
+      display: table;
+      background: gray;
+      border-top: 10px solid $border-gray;
+      border-left: 10px solid $border-gray;
+      border-right: 10px solid $border-gray;
+      &:last-of-type {
+        border-bottom: 10px solid $border-gray;
+        @media screen and (max-width: $medium) {
+          height: 213.5px;
+        }
+      }
+    }
+
+    .article-content {
+        color: $white;
+        background: rgba(0,0,0,0.7);
+        height: 100%;
+        width:100%;
+        position: relative;
+        padding: 0 0 1.5rem 0.5rem;
+        
+        h2 {
+          position:absolute;
+          bottom:3rem;
+          line-height:1.2;
+          span {
+            color: darken($white, 10%);
+            font-weight: normal;
+            font-size: 0.8rem;
+            display: block;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        p {
+          position:absolute;
+          bottom:0;
+          padding-bottom:1rem;
+          color: darken($white, 20%);
+          
+          .clock {
+            margin-left:0.3rem;
+            background-position: -144px -144px;
+            padding-left: 1.5rem;
+            padding-bottom: 1px;
+            opacity: 0.5;
+          }
+        }
+      }
+
+    .main-article {
+      @include background('vizio.jpg', center center);
+    }
+  
+    .secondary-article {
+      &:first-of-type {
+        @include background('android.png', center center);
+      }
+
+      &:last-of-type {
+        @include background('samsung.jpg', center center);
+      }
+    }
+
+
+    @media screen and (min-width: $medium) {
+      height: 400px;
+      position: relative;
+
+      article, div {
+        display: inline-block;
+        background-size: cover;
+      }
+
+      
+
+      .main-article {
+        width: 66.66%;
+        height: 100%;
+        
+        h2 {
+          font-size: 2.4em;
+        }
+
+        p {
+          font-size: 0.8em;
+        }
+      }
+
+      .right-column {
+        height: 100%;
+        width: 33.33%;
+        margin-left: -3px;
+        position: absolute;
+        right:0;
+        
+        p {
+          font-size: 0.8em;
+        }
+      }
+
+      .secondary-article {
+        width: 100%;
+        height: 50%;
+        border-bottom: 10px solid $border-gray;
+        border-top: 10px solid $border-gray;
+        margin-bottom: -3px;
+      }
+
+    }
+
+    @media screen and (min-width: $large) {
+      height: 560px;
+
+      .main-article {
+        position: relative;
+      }
+
+      .main-logo-cover {
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: url('img/cover-gradient.png') no-repeat;
+        background-position: top left;
+        background-size: cover;
+        opacity: 0.7;
+        
+        &:after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 100%;
+          background-size: 273px 65px;
+          @include background('logo-large.png', 20px 20px);
+        }
+      }
+    }
+    
+  } // /HERO
+}
+
+
+
+
+// main content
+
+.main-content {
+
+  min-width: 100px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: $max-width;
+  padding: 2rem 1.3rem 0 1.3rem; 
+
+  
+  .main-ad {
+    height: 48px;
+    width: 100%;
+    max-width: 728px;
+    margin: 0 auto 2rem;
+    background: lighten(gray, 40%);
+    
+    @media screen and (min-width: $large) {
+      height: 90px;
+    }
+  }
+
+  .article-heading {
+    color: $orange;
+    cursor: pointer;
+    
+    h2 {
+      font-size: 1.4em; 
+      margin-bottom: 1rem;
+      &:after {
+        content: ' >';
+        padding-left: 0.5em;
+        display: inline-block;
+      }
+    }
+
+  }
+
+  .news-thumbnail {
+    display: block;
+    min-height: 85px;
+    width: 100%;
+    position: relative;
+  } 
+
+  .latest-news {
+    margin-bottom: 2rem;
+    
+    .news-thumbnail {
+      
+      img {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 72px;
+        height: 72px;
+        border: 1px solid red;
+        float: left;
+      }
+
+      .news-thumbnail-text {
+        display: block;
+        position: absolute;
+        left: 80px;
+        top: 0;
+        background: gray;
+        height: 72px;
+        width: calc(100% - 80px);
+        float: left;
+      }
+
+      @media screen and (min-width: $medium) {
+        width: 32%;
+        display: inline-block;
+        margin-bottom: 1rem;
+        
+        img {
+          position: static;
+          display: block;
+          width: 100%;
+        }
+
+        .news-thumbnail-text {
+          width: 100%;
+          position: static;
+          display: block;
+        }
+      }
+
+      @media screen and (min-width: $large) {
+        width: 24.5%;
+      }
+
+    }
+
+  }
+
+  .latest-funding {
+    margin-bottom: 2rem;
+
+    .news-thumbnail {
+      img {
+        width: 95%;
+        height: 224px;
+        margin-bottom: 1rem;
+      }
+
+      @media screen and (min-width: $medium) {
+        display: inline-block;
+        width: 32%;
+        padding: 0;
+      }
+
+      @media screen and (min-width: $large) {
+        display: inline-block;
+        width: 24.5%;
+        padding: 0;
+      }
+    }
+    
+  }
+
+  .categories {
+
+    .category {
+      margin-bottom:1.3rem;
+      
+      .article-heading {
+        margin-bottom:1.3rem;
+      }
+
+      .news-thumbnail {
+        height: 481px;
+        background: lighten(gray, 20%);
+      }
+
+      .category-bullets {
+        height: 150px;
+        background: lighten(gray, 40%);
+      }
+
+      @media screen and (min-width: $medium) {
+        display: inline-block;
+        width: 48%;
+        margin-right: 1rem;
+      }
+
+      @media screen and (min-width: $large) {
+        display: inline-block;
+        width: 32%;
+        margin-right: 0.5rem;
+        margin-bottom:2rem;
+      }
+
+    }
+
+  }
+  
+  .latest-deals {
+
+    padding-bottom: 1rem;
+    
+    .article-heading {
+      &:after {
+        @include clear;
+      }
+
+      h2 {
+        float: left;
+      }
+
+      a {
+        font-size: 0.9em;
+        float: right;
+        line-height: 1.3em;
+        margin-top: 2px;
+      }
+
+    }
+
+    .news-thumbnail {
+      
+      img {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 72px;
+        height: 72px;
+        border: 1px solid red;
+        float: left;
+      }
+
+      .news-thumbnail-text {
+        display: block;
+        position: absolute;
+        left: 80px;
+        top: 0;
+        background: gray;
+        height: 72px;
+        width: calc(100% - 80px);
+        float: left;
+      }
+
+      @media screen and (min-width: $medium) {
+        display: inline-block;
+        width: 32%;
+        padding-right: 1rem;
+        margin-bottom: 1rem;
+        
+        img {
+          display: block;
+          width: 100%;
+          position: static;
+          margin-bottom:0.5rem;
+        }
+
+        .news-thumbnail-text {
+          display: block;
+          position: static;
+        }
+      }
+
+      @media screen and (min-width: $large) {
+        width: 24.5%;
+      }
+    }
+
+  }
+
+}
+
+
+
+// Footer
+
+footer {
+  .quote {
+    // height:182.5px;
+    padding: 2rem;
+    text-align: center;
+    background: lighten(gray, 45%); 
+    color: $orange;
+
+    
+    blockquote {
+      font-weight: bold;
+      font-size: 1.3em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+
+      cite {
+        font-size: 0.8em;
+        font-weight: normal;
+        color: gray;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-style: normal;
+      } 
+
+      @media screen and (min-width: $medium) {
+        font-size: 2em;
+      }
+
+      @media screen and (min-width: $large) {
+        font-size: 3em;
+      }
+
+    }
+
+
+    .share-button {
+      margin: 0 auto;
+      border-radius: 3px;
+      display: block;
+      height: 30px;
+      width: 80px;
+      background: lighten(gray, 35%);
+      border: 2px solid lighten(gray, 25%);
+      
+      @media screen and (min-width: $large) {
+        height: 40px;
+        width: 100px;
+      }
+
+    }
+  }
+
+  .main-footer {
+    background: $black-background;
+    padding: 2rem 0 2rem 0;
+
+    section {
+      display: block;
+      margin-bottom: 1rem;
+        
+      // temp
+      height: 300px;
+      background: lighten(gray, 40%);
+      border: 10px solid $black-background;   
+      
+      @media screen and (min-width: $small) {
+        display: inline-block;
+        width: 48%;
+      }
+
+      @media screen and (min-width: $medium) {
+        width: 32%;
+      }
+    }
+
+    .social {
+      margin: 0 auto 2rem;
+      text-align: center;
+      
+      // temp
+      height: 30px;
+      width: 300px;
+      background: $black-background;
+      
+      li {
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+        
+        // temp
+        background: $white;
+        border: 8px solid darken(gray, 10%);
+      }
+
+      @media screen and (min-width: $medium) {
+        width: 400px;
+        margin-bottom:3rem;
+
+        li {
+          height: 50px;
+          width: 50px;
+        }  
+      }
+
+    }
+
+    .main-nav-footer {
+      text-align: center;
+      
+      li {
+        display: inline-block;
+        height: 1em;
+        width: 50px;
+        background: lighten(gray, 10%);
+      }
+    }
+
+  }
+
+  .copyright {
+    background: #000;
+    height: 122px;
+    padding-top: 30px;
+  
+  }
+}

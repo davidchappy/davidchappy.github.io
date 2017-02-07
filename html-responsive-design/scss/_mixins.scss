@@ -1,0 +1,21 @@
+@mixin clear {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+@mixin background($imgpath,$position:0 0,$repeat: no-repeat) {
+    background: {
+        image: url(#{$assets-path}#{$imgpath});
+        position: $position;
+        repeat: $repeat;
+    }
+}
+
+@mixin linear-gradient-simple($startX, $startY, $endX, $endY, 
+                              $color1, $color2, $stop) {
+  background: -webkit-linear-gradient($startX $startY,$color1,$color2 $stop);
+  background: -moz-linear-gradient($endY $endX,$color1,$color2 $stop);
+  background: -o-linear-gradient($endY $endX,$color1,$color2 $stop);
+  background: linear-gradient(to $endY $endX,$color1,$color2 $stop);
+}
