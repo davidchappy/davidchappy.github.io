@@ -1,0 +1,38 @@
+// *** Mixins ***
+
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin sidebar {
+  @include clearfix;
+}
+
+@mixin column($col-count, $size) {
+  $col-width: nth($widths, $col-count);
+  $size-name: nth($breakpoint-names, index($breakpoints, $size));
+  
+  .col-#{$col-count}-#{$size-name} {
+    min-height: 1px;
+    display: inline-block;
+    width:$col-width; 
+    padding-left: $spacer-base;
+    padding-right: $spacer-base;
+    float: left;
+    // @include clearfix;
+  }
+}
+
+@mixin column-classes() {
+  @each $size in $breakpoints {
+    @media screen and (min-width: $size) {
+      @for $i from 1 through 12 {
+        @include column($i, $size);
+      }
+    }
+  }
+}

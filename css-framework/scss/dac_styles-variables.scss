@@ -1,0 +1,36 @@
+// *** Variables ***
+
+// Color variables
+// from https://color.adobe.com/Flat-design-colors-1-color-theme-3044245/
+$blue: #334D5C;
+$teal: #45B29D;
+$yellow: #EFC94C;
+$orange: #E27A3F;
+$red: #DF5A49;
+$gray-light: #eee;
+$white: #fff;
+
+// Layout variables
+$phone: 568px;
+$tablet: 768px;
+$desk: 1024px;
+$desk-large: 1200px;
+
+$breakpoints: $phone, $tablet, $desk, $desk-large;
+$breakpoint-names: "phone", "tablet", "desk", "desk-large";
+
+$widths:  8.33333333%, 
+          16.66666667%, 
+          25%, 
+          33.33333333%, 
+          41.6666667%, 
+          50%, 
+          58.333333333%, 
+          66.6666667%, 
+          75%, 
+          83.3333333%, 
+          91.6666667%, 
+          100%;
+
+$max-col-width: 2550px;
+$spacer-base: 1rem;

@@ -1,0 +1,54 @@
+// *** Grid Styles ***
+
+// * Containers *
+// initializer style at top level (body or wrapper div)
+.dac_grid {
+  min-height: 100%;
+  min-width: 100%;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+// Main Container Option 1:
+// full-width (of parent) container
+.dac_container-full {
+  width: 100%;
+  min-height: 1px;
+  position: relative;
+}
+// Main Container Option 2:
+// centered content-width container
+.dac_container-content {
+  max-width: 1440px;
+  min-height: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  
+  @include clearfix;
+}
+
+// nested immediately under dac_container-content 
+.dac_container-content-padded {
+  width: 100%;
+  padding-left: $spacer-base;
+  padding-right: $spacer-base;
+}
+
+// Sidebar
+.dac_sidebar-right {
+  @include sidebar;
+  position: right;
+  margin-left: 200px;
+}
+
+.dac_sidebar-left {
+  @include sidebar;
+  float: left;
+}
+
+@include column-classes;
+
+
+// ****************** //
