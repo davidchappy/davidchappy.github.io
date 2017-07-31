@@ -22,10 +22,14 @@ var explosion_image = 'images/explosion.png';
 var missile_image = 'images/missile_sprite.png';
 var city_image = 'images/city.png';
 var base_image = 'images/base.png';
-var plane_image_east = 'images/planeeast.png';
-var plane_image_west = 'images/planewest.png';
-var ufo_image = 'images/ufo.png';
-var ufo_image_inverse = 'images/ufo2.png';
+// var plane_image_east = 'images/planeeast.png';
+var plane_image_east = 'images/austin.png';
+// var plane_image_west = 'images/planewest.png';
+var plane_image_west = 'images/austin.png';
+// var ufo_image = 'images/ufo.png';
+var ufo_image = 'images/cody.png';
+// var ufo_image_inverse = 'images/ufo2.png';
+var ufo_image_inverse = 'images/cody.png';
 
 // Canvas
 var $canvasElement = $("#canvas");
@@ -393,7 +397,7 @@ function updateFiredMissiles() {
         // blow up the missile
         missile.flying = false;
         explosions.push(new Explosion(missile));
-        playSound('explosion.wav');
+        playSound(explosionSound);
         index = firedMissiles.indexOf(missile);  
         firedMissiles.splice(index, 1);
       } else {
@@ -410,11 +414,14 @@ function updateFiredMissiles() {
   }
 }
 
-function checkForExplosions(elementArray, explosion, score, flyer) {
+function checkForExplosions(elementArray, explosion, score, flyer, sound) {
   for(var element in elementArray) {
     var element = elementArray[element];
     
     if(explosionCollided(explosion, element)) {
+      if(sound) {
+        playSound(sound);
+      };
       element.destroyed = true;
       if(flyer) element.flying = false;
       if(score) addScore(score);
@@ -426,10 +433,10 @@ function updateExplosions() {
   for(var explosion in explosions) {
     var explosion = explosions[explosion];
     checkForExplosions(firedMissiles, explosion, MISSILE_SCORE);
-    checkForExplosions(cities, explosion);
-    checkForExplosions(bases, explosion);
-    checkForExplosions(ufos, explosion, UFO_SCORE, true);
-    checkForExplosions(planes, explosion, PLANE_SCORE, true);
+    checkForExplosions(cities, explosion, false, false, bombExplodeSound);
+    checkForExplosions(bases, explosion, false, false, bombExplodeSound);
+    checkForExplosions(ufos, explosion, UFO_SCORE, true, bombExplodeSound);
+    checkForExplosions(planes, explosion, PLANE_SCORE, true, bombExplodeSound);
 
     // remove explosion if counter is at 0
     if(explosion.counter === 0) {
@@ -449,7 +456,7 @@ function updateExplosions() {
 // Acting
 function firePlayerMissile(x,y) {
   // get missile from base and launch it
-  if(game.sound) playSound('shoot.wav');
+  playSound(shootSound);
   var base = findNearestBase(x);
   if(base) {
     var missile = base.missiles.splice([base.missiles.length-1], 1)[0];
@@ -467,6 +474,7 @@ function firePlayerMissile(x,y) {
 
 function fireEnemyMissile(x,y) {
   // get last enemyMissile and launch it
+  playSound(bombDropSound);
   var missile = enemyMissiles.splice(enemyMissiles.length - 1)[0];
   missile.owner = 'enemy';
   fireMissile(missile,x,y);
@@ -712,8 +720,9 @@ function drawPlanes(c) {
 
 // Helpers
 function playSound(soundFile) {
-  var snd = new Audio('sounds/' + soundFile);
-  snd.play();
+  if(game.sound) {
+    soundFile.play();
+  }
 }
 
 function findNearestBase(x) {

@@ -16,7 +16,7 @@
   <canvas id="canvas"></canvas>  
 
   <p class="reference"><em>A <a href="http://www.theodinproject.com/courses/javascript-and-jquery/lessons/building-games-with-canvas">JavaScript project</a> by <strong>David Chapman</strong> in partial fulfillment of <a href="http://www.theodinproject.com/">The Odin Project</a></em></p>
-  <p class="reference">Audio files borrowed from <a href="https://www.html5rocks.com/en/tutorials/canvas/notearsgame/">here</a></p>
+  <p class="reference">Audio files borrowed from <a href="https://www.html5rocks.com/en/tutorials/canvas/notearsgame/">here</a> and <a href="hhttp://soundbible.com/">here</a></p>
 
   <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.1.min.js"></script>
   <script>
@@ -27,6 +27,11 @@
   <script src="jquery.hotkeys.js"></script>
   <script src="game.js"></script>
   <script>
+
+  var explosionSound = new Audio('sounds/explosion.wav');
+  var shootSound = new Audio('sounds/shoot.wav');
+  var bombDropSound = new Audio('sounds/bomb-drop.mp3');
+  var bombExplodeSound = new Audio('sounds/bomb-explosion.mp3');
 
     function setup(starting) {
       initCities();
@@ -60,9 +65,11 @@
       drawPlanes(c);
       drawCrosshairs(c);
     }
-
+    
+  $(document).ready(function() {
     setup(true);
     setInterval(gameLoop,1000/FPS);
+  });
   </script>
 
 
