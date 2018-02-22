@@ -24,10 +24,10 @@ let reflectionCube, reflectingMaterial, reflectButton;
 
 // Model and textures
 let shoeObject = 'assets/shoe.dae';
-let shoeMap = 'assets/DefaultMaterial_albedo.jpg';
-let shoeMetalnessMap = 'assets/DefaultMaterial_metallic.jpg';
-let shoeNormalMap = 'assets/DefaultMaterial_normal.png';
-let shoeRoughnessMap = 'assets/DefaultMaterial_roughness.jpg';
+let shoeMap = 'assets/DefaultMaterial_albedo_low.jpg';
+let shoeMetalnessMap = 'assets/DefaultMaterial_metallic_low.jpg';
+let shoeNormalMap = 'assets/DefaultMaterial_normal_low.png';
+let shoeRoughnessMap = 'assets/DefaultMaterial_roughness_low.jpg';
 
 // Run this baby
 init();
@@ -181,12 +181,12 @@ function loadObject(creator) {
 function loadTextures(object) {
   const textureLoader = new THREE.TextureLoader();
   textureLoader.load(shoeMap, function (mapTexture) {
-    // textureLoader.load(shoeNormalMap, function (normalMap) {
+    textureLoader.load(shoeNormalMap, function (normalMap) {
       textureLoader.load(shoeRoughnessMap, function (roughnessMap) {
         textureLoader.load(shoeMetalnessMap, function (metalnessMap) {
           const material = new THREE.MeshStandardMaterial({
             map: mapTexture,
-            // normalMap: normalMap,
+            normalMap: normalMap,
             roughnessMap: roughnessMap,
             metalnessMap: metalnessMap,
             envMap: reflectionCube,
@@ -198,7 +198,7 @@ function loadTextures(object) {
           object.material = material;
         });
       });
-    // });
+    });
   });
 }
 
