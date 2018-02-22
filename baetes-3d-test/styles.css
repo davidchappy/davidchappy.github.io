@@ -15,6 +15,7 @@ canvas {
 body { 
   background-color: #7a6c5b;
   font-family: Helvetica, Arial, sans-serif; 
+  overflow: hidden;
 }
 
 button {

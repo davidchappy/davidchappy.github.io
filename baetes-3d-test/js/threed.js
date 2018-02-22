@@ -181,12 +181,12 @@ function loadObject(creator) {
 function loadTextures(object) {
   const textureLoader = new THREE.TextureLoader();
   textureLoader.load(shoeMap, function (mapTexture) {
-    textureLoader.load(shoeNormalMap, function (normalMap) {
+    // textureLoader.load(shoeNormalMap, function (normalMap) {
       textureLoader.load(shoeRoughnessMap, function (roughnessMap) {
         textureLoader.load(shoeMetalnessMap, function (metalnessMap) {
           const material = new THREE.MeshStandardMaterial({
             map: mapTexture,
-            normalMap: normalMap,
+            // normalMap: normalMap,
             roughnessMap: roughnessMap,
             metalnessMap: metalnessMap,
             envMap: reflectionCube,
@@ -198,7 +198,7 @@ function loadTextures(object) {
           object.material = material;
         });
       });
-    });
+    // });
   });
 }
 
