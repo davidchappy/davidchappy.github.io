@@ -4,9 +4,11 @@ window.render = render;
 // Settings
 const CLEAR_COLOR = 0x7a6c5b;
 const BGD_OPACITY = 1;
-const CAMERA_Z = 30;
-const ZOOM_MIN = 1;
-const ZOOM_MAX = 1000;
+const CAMERA_Z = 150;
+const CONTROLS_ZOOM = true;
+const CONTROLS_PAN = false;
+const ZOOM_MIN = 130;
+const ZOOM_MAX = 800;
 const SHADOW_DIST = 100;
 const MATERIAL_SHININESS = 200;
 const SPINNER_OPTIONS = {
@@ -25,10 +27,10 @@ let reflectionCube, reflectingMaterial, reflectButton;
 
 // Model and textures
 let shoeObject = 'assets/shoe.dae';
-let shoeMap = 'assets/DefaultMaterial_albedo_low.jpg';
-let shoeMetalnessMap = 'assets/DefaultMaterial_metallic_low.jpg';
-let shoeNormalMap = 'assets/DefaultMaterial_normal_low.png';
-let shoeRoughnessMap = 'assets/DefaultMaterial_roughness_low.jpg';
+let shoeMap = 'assets/DefaultMaterial_albedo.jpg';
+let shoeMetalnessMap = 'assets/DefaultMaterial_metallic.jpg';
+let shoeNormalMap = 'assets/DefaultMaterial_normal.png';
+let shoeRoughnessMap = 'assets/DefaultMaterial_roughness.jpg';
 
 // Run this baby
 init();
@@ -64,7 +66,7 @@ function setCamera() {
   );
   camera.position.set( 150, 230, 150 );
   // camera.lookAt( new THREE.Vector3( 0, 150, 0 ) );
-  // camera.position.z = CAMERA_Z;
+  camera.position.z = CAMERA_Z;
   scene.add(camera);
 }
 
@@ -89,8 +91,8 @@ function setRenderer() {
 function setControls() {
   controls = new THREE.OrbitControls(camera, renderer.domElement);
   window.controls = controls;
-  controls.enableZoom = false;
-  controls.enablePan = false;
+  controls.enableZoom = CONTROLS_ZOOM;
+  controls.enablePan = CONTROLS_PAN;
   controls.minDistance = ZOOM_MIN;
   controls.maxDistance = ZOOM_MAX;
   controls.addEventListener('change', render);
