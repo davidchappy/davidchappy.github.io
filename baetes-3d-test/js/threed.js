@@ -16,8 +16,9 @@ const SCALE = 100;
 
 // Global vars
 let spinner;
-let scene, camera, renderer, shoe;
+let scene, camera, renderer, shoe, canvasElement;
 let controls, rotating;
+let raycaster, mouse, clicking;
 let ambientLight, directionalLight;
 let mtlLoader, loader;
 let reflectionCube, reflectingMaterial, reflectButton;
@@ -39,6 +40,7 @@ function init() {
   setCamera();
   setRenderer();
   setControls();
+  setRaycasting();
   setLighting();
   initReflection();
   loadModel();
@@ -68,6 +70,7 @@ function setCamera() {
 
 function setRenderer() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
+  canvasElement = renderer.domElement;
 
   window.renderer = renderer;
 
@@ -91,6 +94,12 @@ function setControls() {
   controls.minDistance = ZOOM_MIN;
   controls.maxDistance = ZOOM_MAX;
   controls.addEventListener('change', render);
+}
+
+function setRaycasting() {
+  raycaster = new THREE.Raycaster();
+  mouse = new THREE.Vector2(); 
+  clicking = false;
 }
 
 function setLighting() {
@@ -212,17 +221,37 @@ function toggleReflection() {
   // render();
 }
 
+function checkForIntersection() {
+  if (!mouse.x || !mouse.y) { return }
+
+  raycaster.setFromCamera(mouse, camera);
+  const intersect = raycaster.intersectObject(shoe)[0];
+
+  if (intersect) {
+    toggleOverlay();
+  }
+}
+
 function setListeners() {
-  window.addEventListener('resize', function (event) {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+  window.addEventListener('resize', onResize);
+  canvasElement.addEventListener('click', onCanvasMouseDown);
 
   // reflectButton.addEventListener('click', function (event) {
   //   event.preventDefault();
   //   toggleReflection();
   // });
+}
+
+function onResize(event) {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function onCanvasMouseDown(event) {
+  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+  clicking = true;
 }
 
 function animate() {
@@ -233,6 +262,11 @@ function animate() {
 function render() {
   if (rotating) { 
     shoe.rotation.y += 0.01;
+  }
+
+  if (clicking) {
+    requestAnimationFrame(checkForIntersection);
+    clicking = false;
   }
 
   camera.lookAt(scene.position);
