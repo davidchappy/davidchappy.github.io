@@ -146,7 +146,7 @@ function initReflection() {
 function loadModel() {
   spinner.spin(document.body);
   mtlLoader = new THREE.MTLLoader();
-  mtlLoader.load('assets/vans-shoes-new1.mtl', function (creator) {
+  // mtlLoader.load('assets/vans-shoes-new1.mtl', function (creator) {
     // creator.preload();
     // const materials = creator.materials;
 
@@ -158,18 +158,21 @@ function loadModel() {
     //   }
     // }
 
-    loadObject(creator);
-  });
+    // loadObject(creator);
+  // });
+  loadObject();  
 }
 
-function loadObject(creator) {
-  loader = shoeObject.match('\.obj$') ? new THREE.OBJLoader() : new THREE.ColladaLoader();
+function loadObject(creator = null) {
+  // loader = shoeObject.match('\.obj$') ? new THREE.OBJLoader() : new THREE.ColladaLoader();
+  loader = new THREE.ColladaLoader();
 
   // Uncomment to use materials (loaded via loadMaterials())
   // loader.setMaterials(creator);
 
   loader.load(shoeObject, function (object) {
-    shoe = shoeObject.match('\.obj$') ? object.children[0] : object.scene.children[0];
+    // shoe = shoeObject.match('\.obj$') ? object.children[0] : object.scene.children[0];
+    shoe = object.scene.children[0];
     shoe.scale.set(SCALE, SCALE, SCALE);
     window.shoe = shoe;
 
@@ -222,7 +225,7 @@ function toggleReflection() {
 }
 
 function checkForIntersection() {
-  if (!mouse.x || !mouse.y) { return }
+  if (!mouse.x || !mouse.y || !shoe) { return }
 
   raycaster.setFromCamera(mouse, camera);
   const intersect = raycaster.intersectObject(shoe)[0];
