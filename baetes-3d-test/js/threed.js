@@ -233,7 +233,8 @@ function checkForIntersection() {
   const intersect = raycaster.intersectObject(shoe)[0];
 
   if (intersect) {
-    toggleOverlay();
+    showOverlayHeader();
+    showSidebar();
   }
 }
 
